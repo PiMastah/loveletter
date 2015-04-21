@@ -39,5 +39,9 @@ Dealer.prototype.initDeck = function() {
 };
 
 Dealer.prototype.drawCard = function() {
-    return this.deck.shift();
+    if (this.deck.length > 0) {
+        return this.deck.shift();
+    } else {
+        return false;
+    }
 };

@@ -34,4 +34,11 @@ describe("A dealer", function () {
         assert.same(drawnCard, firstCard);
         assert.equals(self.dealer.deck.length, initialDeckLength - 1);
     });
+
+    it("can not draw a card from the deck if it's empty", function () {
+        self.dealer.deck = [];
+        var result = self.dealer.drawCard();
+
+        assert.isFalse(result);
+    })
 });
