@@ -2,19 +2,19 @@ var buster = require("buster");
 var assert = buster.assert;
 var refute = buster.refute;
 
-var deckFactory = require('../../src/server/deck');
+var dealerFactory = require('../../src/server/dealer');
 
 buster.spec.expose();
 
-describe("A deck", function () {
+describe("A dealer", function () {
     var self = this;
     buster.spec.before(function () {
-        self.deck = deckFactory.create();
+        self.dealer = dealerFactory.create();
     });
 
     it("can initiate a new deck", function () {
         var config = {'1' : 1, '2' : 2};
-        var deck = self.deck.initDeck(config);
+        var deck = self.dealer.initDeck(config);
 
         assert.same(deck.length, 3);
         assert.equals(deck[0], {rank : 1});
@@ -23,11 +23,13 @@ describe("A deck", function () {
     });
 
     it("can shuffle a deck", function () {
-        var config = {'1' : 1, '2' : 2, '3' : 3};
-        var unshuffledDeck = self.deck.initDeck(config);
+        var config = {'1' : 1, '2' : 2, '3' : 3, '4': 4};
+        var unshuffledDeck = self.dealer.initDeck(config);
         var deck = unshuffledDeck.splice();
-        var shuffledDeck = self.deck.shuffle(deck);
+        var shuffledDeck = self.dealer.shuffle(deck);
 
         refute.equals(shuffledDeck, unshuffledDeck);
-    })
+    });
+
+
 });
