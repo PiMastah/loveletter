@@ -4,8 +4,8 @@
 	require.config({
 		paths: {
 			"jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min",
-			"underscore": "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js",
-			"text": "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.js",
+			"underscore": "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min",
+			"text": "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min",
 			"jquery.renderer": "../lib/renderer",
 		},
 		shim: {
