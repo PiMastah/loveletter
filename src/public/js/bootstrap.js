@@ -4,9 +4,8 @@
 	require.config({
 		paths: {
 			"jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min",
-			"underscore": "../lib/underscore",
-			"text": "../lib/text",
-			"jquery.bootstrap": "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min",
+			"underscore": "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js",
+			"text": "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.js",
 			"jquery.renderer": "../lib/renderer",
 		},
 		shim: {
@@ -19,13 +18,10 @@
 			, "jquery.renderer": {
 				deps: ["jquery"]
 			}
-			, "jquery.bootstrap": {
-				deps: ["jquery", "underscore"]
-			}
 		}
 	});
 
-	require(['underscore', 'jquery', 'app', 'config', 'jquery.renderer', 'jquery.bootstrap'], function (_, $, App, config) {
+	require(['underscore', 'jquery', 'app', 'config', 'jquery.renderer'], function (_, $, App, config) {
 
 		app = new App(config);
 	});
