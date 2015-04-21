@@ -50,3 +50,7 @@ Dealer.prototype.initDeck = function() {
     }
     this.deck = deck;
 };
+
+Dealer.prototype.drawCard = function() {
+    return this.deck.shift();
+};
