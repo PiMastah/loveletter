@@ -4,7 +4,10 @@
   "description": "a simple card game",
   "main": "src/main.js",
   "directories": {
-      "test": "test"
+    "test": "test"
+  },
+  "devDependencies": {
+    "buster": "^0.7.18"
   },
   "scripts": {
     "test": "buster-test"
