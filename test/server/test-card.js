@@ -1,5 +1,5 @@
 var buster = require("buster");
-var expect = buster.expect;
+var assert = buster.assert;
 
 var cardFactory = require('../../src/server/card');
 
@@ -10,6 +10,6 @@ describe("A card", function () {
         var rank = 1;
         var card = cardFactory.create(rank);
 
-        expect(card.rank).toBe(rank);
+        assert.same(card.rank, rank);
     });
 });
