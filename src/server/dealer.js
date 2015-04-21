@@ -7,19 +7,6 @@ module.exports = {
 };
 
 var Dealer = function () {
-    this.deckConfig = {
-        '1' : 5,
-        '2' : 2,
-        '3' : 2,
-        '4' : 2,
-        '5' : 2,
-        '6' : 1,
-        '7' : 1,
-        '8' : 1
-    };
-    this.initDeck();
-    this.shuffleDeck();
-
     return this;
 };
 
