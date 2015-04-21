@@ -13,23 +13,32 @@ describe("A dealer", function () {
     });
 
     it("can initiate a new deck", function () {
-        var config = {'1' : 1, '2' : 2};
-        var deck = self.dealer.initDeck(config);
+        self.dealer.deckConfig = {'1' : 1, '2' : 2};
+        self.dealer.initDeck();
 
-        assert.same(deck.length, 3);
-        assert.equals(deck[0], {rank : 1});
-        assert.equals(deck[1], {rank : 2});
-        assert.equals(deck[2], {rank : 2});
+        assert.same(self.dealer.deck.length, 3);
+        assert.equals(self.dealer.deck[0], {rank : 1});
+        assert.equals(self.dealer.deck[1], {rank : 2});
+        assert.equals(self.dealer.deck[2], {rank : 2});
     });
 
     it("can shuffle a deck", function () {
-        var config = {'1' : 1, '2' : 2, '3' : 3, '4': 4};
-        var unshuffledDeck = self.dealer.initDeck(config);
-        var deck = unshuffledDeck.splice();
-        var shuffledDeck = self.dealer.shuffle(deck);
+        self.dealer.initDeck();
+        var unshuffledDeck = self.dealer.deck.splice();
+        self.dealer.shuffleDeck();
 
-        refute.equals(shuffledDeck, unshuffledDeck);
+        refute.equals(self.dealer.deck, unshuffledDeck);
     });
 
+/*    it("can draw a card from the deck", function () {
+        var config = {'1' : 1, '2' : 2};
+        var deck = self.dealer.initDeck(config);
+        self.dealer.deck = deck;
+        var initialDeckLength = deck.length;
+        var firstCard = deck[0];
+        var drawnCard = self.dealer.drawCard();
 
+        assert.same(drawnCard, firstCard);
+        assert.equals(deck.length, initialDeckLength - 1);
+    });*/
 });

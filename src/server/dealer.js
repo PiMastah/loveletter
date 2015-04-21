@@ -17,8 +17,8 @@ var Dealer = function () {
         '7' : 1,
         '8' : 1
     };
-    this.deck = this.initDeck();
-    this.deck = this.shuffle(this.deck);
+    this.initDeck();
+    this.shuffleDeck();
 
     return this;
 };
@@ -27,9 +27,9 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-Dealer.prototype.shuffle = function(deck) {
-    if (deck && deck.length) {
-        deck.forEach(function (card, index, cards) {
+Dealer.prototype.shuffleDeck = function() {
+    if (this.deck && this.deck.length) {
+        this.deck.forEach(function (card, index, cards) {
             var remaining = cards.length - index;
             var moveFromIndex = getRandomInt(index, index + remaining - 1);
             var	temp = cards[index];
@@ -38,18 +38,15 @@ Dealer.prototype.shuffle = function(deck) {
             cards[moveFromIndex] = temp;
         });
     }
-
-    return deck;
 };
 
-Dealer.prototype.initDeck = function(deckConfig) {
+Dealer.prototype.initDeck = function() {
     var deck = [];
-    for (var rank in deckConfig) {
+    for (var rank in this.deckConfig) {
         rank = parseInt(rank);
-        for (var i = 0; i < deckConfig[rank]; i++) {
+        for (var i = 0; i < this.deckConfig[rank]; i++) {
             deck.push(cardFactory.create(rank));
         }
     }
-    return deck;
+    this.deck = deck;
 };
-
