@@ -2,7 +2,10 @@
   "name": "loveletter",
   "version": "0.0.0",
   "description": "a simple card game",
-  "main": "src/main.js",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~4.12.3"
+  },
   "directories": {
     "test": "test"
   },
@@ -14,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/PiMastah/loveletter.git"
+    "url": "git://github.com/PiMastah/loveletter.git"
   },
   "author": "",
   "license": "ISC"
