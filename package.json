@@ -1,0 +1,21 @@
+{
+  "name": "loveletter",
+  "version": "0.0.0",
+  "description": "a simple card game",
+  "main": "src/main.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "buster": "^0.7.18"
+  },
+  "scripts": {
+    "test": "buster-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/PiMastah/loveletter.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
