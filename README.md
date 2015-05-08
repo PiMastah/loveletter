@@ -7,9 +7,9 @@ Roadmap:
 First Goal:
 
 * server
-** full game state and transitions
-** API for frontend interaction
+    * full game state and transitions
+    * API for frontend interaction
 * client
-** simple GUI
+    * simple GUI
 
 More info coming soon™
