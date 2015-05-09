@@ -12,7 +12,7 @@ var Gamestate = function (deck) {
     this.deck = deck;
     this.playedCards = [];
     this.discardedCards = [];
-    this.currentPlayer = 0;
-    this.startingPlayer = 0;
+    this.currentPlayer = -1;
+    this.startingPlayer = -1;
     return this;
 };

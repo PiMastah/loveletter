@@ -23,6 +23,7 @@ describe("A baron", function () {
 
         self.state.hands[currentPlayer] = [cardFactory.create(2)];
         self.state.hands[opponent] = [cardFactory.create(1)];
+        self.state.currentPlayer = currentPlayer;
 
         cardPolicy(self.state, opponent);
 
@@ -37,6 +38,7 @@ describe("A baron", function () {
 
         self.state.hands[currentPlayer] = [cardFactory.create(1)];
         self.state.hands[opponent] = [cardFactory.create(2)];
+        self.state.currentPlayer = currentPlayer;
 
         cardPolicy(self.state, opponent);
 
@@ -51,6 +53,7 @@ describe("A baron", function () {
 
         self.state.hands[currentPlayer] = [cardFactory.create(1)];
         self.state.hands[opponent] = [cardFactory.create(1)];
+        self.state.currentPlayer = currentPlayer;
 
         cardPolicy(self.state, opponent);
 
