@@ -16,6 +16,7 @@ describe("When Dealing cards", function () {
         self.deck.shuffleDeck();
         self.state = stateFactory.create(self.deck);
         self.state.players = ['Alice', 'Bob'];
+        self.state.currentPlayer = 0;
         dealPolicy(self.state);
     });
 
@@ -39,6 +40,7 @@ describe("When Dealing cards", function () {
         deck.initDeck();
         var state = stateFactory.create(deck);
         state.players = ['Alice', 'Bob'];
+        state.currentPlayer = 0;
         dealPolicy(state);
 
         state.discardedCards.forEach(function (card, index) {
