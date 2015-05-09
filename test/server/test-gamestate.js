@@ -61,18 +61,13 @@ describe("Game state", function () {
         refute.contains(self.state.remainingPlayers, self.state.players[index]);
     });
 
-    it("can make a player discard his hand and draw a new card", function () {
-        var nextCard = cardFactory.create('2');
+    it("can make a player discard his hand", function () {
         var opponent = 1;
-        var handBefore = [cardFactory.create('1')];
-
-        self.deck.cards = [nextCard];
-        self.state.hands[opponent] = handBefore;
+        self.state.hands[opponent] = [cardFactory.create('1')];
 
         self.state.discardHand(opponent);
 
-        refute.equals(self.state.hands[opponent], handBefore);
-        assert.equals(self.state.hands[opponent], [nextCard]);
+        assert.isArrayLike([], self.state.hands[opponent]);
     });
 
     it("can remove a player when he discards a princess", function () {
