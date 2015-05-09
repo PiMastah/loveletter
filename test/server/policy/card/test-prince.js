@@ -14,8 +14,8 @@ describe("A Prince", function () {
         self.state = stateFactory.create();
         self.state.players = ['Alice', 'Bob'];
         self.state.remainingPlayers = ['Alice', 'Bob'];
-
     });
+
     it("makes a player discard his hand", function () {
         var opponent = 1;
         self.state.hands[opponent] = [cardFactory.create('1')];
