@@ -20,6 +20,10 @@ describe("Game state", function () {
         assert(undefined !== self.state.players);
     });
 
+    it("knows the remaining players", function () {
+        assert(undefined !== self.state.remainingPlayers);
+    });
+
     it("knows the starting player", function () {
         assert(undefined !== self.state.startingPlayer);
     });

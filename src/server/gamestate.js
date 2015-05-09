@@ -6,6 +6,7 @@ module.exports = {
 
 var Gamestate = function () {
     this.players = [];
+    this.remainingPlayers = [];
     this.hands = [];
     this.scores = [];
     this.deck = [];
