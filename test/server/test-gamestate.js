@@ -26,10 +26,6 @@ describe("Game state", function () {
         assert.defined(self.state.remainingPlayers);
     });
 
-    it("knows the starting player", function () {
-        assert.defined(self.state.startingPlayer);
-    });
-
     it("knows the current player", function () {
         assert.defined(self.state.currentPlayer);
     });
