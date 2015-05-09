@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-Deck.prototype.shuffleDeck = function() {
+Deck.prototype.shuffle = function() {
     if (this.cards && this.cards.length) {
         this.cards.forEach(function (card, index, cards) {
             var remaining = cards.length - index;

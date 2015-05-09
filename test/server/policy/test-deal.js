@@ -13,7 +13,7 @@ describe("When Dealing cards", function () {
         self.deck = deckFactory.create();
         self.deck.deckConfig = {'1' : 5, '2' : 2, '3': 2, '4' : 2, '5': 2, '6': 1, '7': 1, '8': 1};
         self.deck.initDeck();
-        self.deck.shuffleDeck();
+        self.deck.shuffle();
         self.state = stateFactory.create(self.deck);
         self.state.players = ['Alice', 'Bob'];
         self.state.currentPlayer = 0;

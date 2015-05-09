@@ -21,7 +21,7 @@ describe("A deck", function () {
 
     it("can shuffle a deck", function () {
         var unshuffledDeck = self.deck.cards.splice();
-        self.deck.shuffleDeck();
+        self.deck.shuffle();
 
         refute.equals(self.deck.cards, unshuffledDeck);
     });
