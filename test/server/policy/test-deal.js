@@ -32,4 +32,20 @@ describe("When Dealing cards", function () {
     it("the remaining ten cards are placed in the stack", function () {
         assert.same(self.state.deck.cards.length, 10);
     });
+
+    it("first we discard, then we deal cards to each player", function () {
+        var deck = deckFactory.create();
+        deck.deckConfig = {'1' : 1, '2' : 1, '3': 1, '4' : 1, '5': 1, '6': 1};
+        deck.initDeck();
+        var state = stateFactory.create(deck);
+        state.players = ['Alice', 'Bob'];
+        dealPolicy(state);
+
+        state.discardedCards.forEach(function (card, index) {
+            assert.same(card.rank, index+1);
+        });
+        state.hands.forEach(function (hand, index) {
+            assert.same(hand[0].rank, index+1+4);
+        });
+    });
 });
