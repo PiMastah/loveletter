@@ -50,4 +50,18 @@ describe("When Dealing cards", function () {
             assert.same(hand[0].rank, index+1+4);
         });
     });
+
+    it("begin with current Player", function () {
+        var deck = deckFactory.create();
+        deck.deckConfig = {'0' : 4, '1' : 1, '2' : 1};
+        deck.initDeck();
+        var state = stateFactory.create(deck);
+        state.players = ['Alice', 'Bob'];
+
+        state.currentPlayer = 1;
+        dealPolicy(state);
+
+        assert.same(state.hands[0][0].rank, 2);
+        assert.same(state.hands[1][0].rank, 1);
+    });
 });
