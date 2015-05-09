@@ -12,10 +12,11 @@ describe("When Dealing cards", function () {
     buster.spec.before(function () {
         self.deck = deckFactory.create();
         self.deck.deckConfig = {'1' : 5, '2' : 2, '3': 2, '4' : 2, '5': 2, '6': 1, '7': 1, '8': 1};
-        self.deck.initDeck();
-        self.deck.shuffleDeck();
+        self.deck.init();
+        self.deck.shuffle();
         self.state = stateFactory.create(self.deck);
         self.state.players = ['Alice', 'Bob'];
+        self.state.currentPlayer = 0;
         dealPolicy(self.state);
     });
 
@@ -36,9 +37,10 @@ describe("When Dealing cards", function () {
     it("first we discard, then we deal cards to each player", function () {
         var deck = deckFactory.create();
         deck.deckConfig = {'1' : 1, '2' : 1, '3': 1, '4' : 1, '5': 1, '6': 1};
-        deck.initDeck();
+        deck.init();
         var state = stateFactory.create(deck);
         state.players = ['Alice', 'Bob'];
+        state.currentPlayer = 0;
         dealPolicy(state);
 
         state.discardedCards.forEach(function (card, index) {
@@ -47,5 +49,19 @@ describe("When Dealing cards", function () {
         state.hands.forEach(function (hand, index) {
             assert.same(hand[0].rank, index+1+4);
         });
+    });
+
+    it("begin with current Player", function () {
+        var deck = deckFactory.create();
+        deck.deckConfig = {'0' : 4, '1' : 1, '2' : 1};
+        deck.init();
+        var state = stateFactory.create(deck);
+        state.players = ['Alice', 'Bob'];
+
+        state.currentPlayer = 1;
+        dealPolicy(state);
+
+        assert.same(state.hands[0][0].rank, 2);
+        assert.same(state.hands[1][0].rank, 1);
     });
 });

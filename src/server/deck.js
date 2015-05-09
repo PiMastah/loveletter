@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-Deck.prototype.shuffleDeck = function() {
+Deck.prototype.shuffle = function() {
     if (this.cards && this.cards.length) {
         this.cards.forEach(function (card, index, cards) {
             var remaining = cards.length - index;
@@ -27,7 +27,7 @@ Deck.prototype.shuffleDeck = function() {
     }
 };
 
-Deck.prototype.initDeck = function() {
+Deck.prototype.init = function() {
     var cards = [];
     for (var rank in this.deckConfig) {
         rank = parseInt(rank);

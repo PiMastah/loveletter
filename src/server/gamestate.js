@@ -12,7 +12,17 @@ var Gamestate = function (deck) {
     this.deck = deck;
     this.playedCards = [];
     this.discardedCards = [];
-    this.currentPlayer = 0;
-    this.startingPlayer = 0;
+    this.currentPlayer = -1;
     return this;
+};
+
+Gamestate.prototype.removePlayer = function(index) {
+    this.remainingPlayers.splice(index, 1);
+};
+
+Gamestate.prototype.discardHand = function(opponent) {
+    var discard = this.hands[opponent][0];
+    if ('8' === discard.rank) {
+        this.remainingPlayers.splice(opponent, 1);
+    }
 };
