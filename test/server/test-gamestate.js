@@ -4,6 +4,7 @@ var refute = buster.refute;
 
 var stateFactory = require('../../src/server/gamestate');
 var deckFactory = require('../../src/server/deck');
+var cardFactory = require('../../src/server/card');
 
 buster.spec.expose();
 
@@ -12,6 +13,9 @@ describe("Game state", function () {
     buster.spec.before(function () {
         self.deck = deckFactory.create();
         self.state = stateFactory.create(self.deck);
+        self.players = ['Alice', 'Bob'];
+        self.state.players = self.players;
+        self.state.remainingPlayers = self.players;
     });
 
     it("can be created", function () {
@@ -51,12 +55,32 @@ describe("Game state", function () {
     });
 
     it("can remove a player from the round", function () {
-        var players = ['Alice', 'Bob'];
-        self.state.players = players;
-        self.state.remainingPlayers = players;
         var index = 1;
 
         self.state.removePlayer(index);
         refute.contains(self.state.remainingPlayers, self.state.players[index]);
+    });
+
+    it("can make a player discard his hand and draw a new card", function () {
+        var nextCard = cardFactory.create('2');
+        var opponent = 1;
+        var handBefore = [cardFactory.create('1')];
+
+        self.deck.cards = [nextCard];
+        self.state.hands[opponent] = handBefore;
+
+        self.state.discardHand(opponent);
+
+        refute.equals(self.state.hands[opponent], handBefore);
+        assert.equals(self.state.hands[opponent], [nextCard]);
+    });
+
+    it("can remove a player when he discards a princess", function () {
+        var opponent = 1;
+        self.state.hands[opponent] = [cardFactory.create('8')];
+
+        self.state.discardHand(opponent);
+
+        refute.contains(self.state.remainingPlayers, self.players[opponent]);
     });
 });

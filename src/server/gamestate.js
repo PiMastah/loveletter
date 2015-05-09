@@ -19,3 +19,12 @@ var Gamestate = function (deck) {
 Gamestate.prototype.removePlayer = function(index) {
     this.remainingPlayers.splice(index, 1);
 };
+
+Gamestate.prototype.discardHand = function(opponent) {
+    var discard = this.hands[opponent][0];
+    if ('8' === discard.rank) {
+        this.remainingPlayers.splice(opponent, 1);
+    } else {
+        this.hands[opponent] = [this.deck.drawCard()];
+    }
+};
