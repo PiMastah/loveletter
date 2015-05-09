@@ -6,6 +6,6 @@ config["node"] = {
     sources: [
     ],
     tests: [
-        "test/server/test-*.js"
+        "test/**/test-*.js"
     ]
 };
