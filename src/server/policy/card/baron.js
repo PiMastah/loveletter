@@ -3,9 +3,9 @@ module.exports = function (state, opponent) {
     var opponentPlayerCardRank = parseInt(state.hands[opponent][0].rank);
 
     if (currentPlayerCardRank > opponentPlayerCardRank) {
-        state.remainingPlayers.splice(opponent, 1);
+        state.removePlayer(opponent);
     } else if (currentPlayerCardRank < opponentPlayerCardRank) {
-        state.remainingPlayers.splice(state.currentPlayer, 1);
+        state.removePlayer(state.currentPlayer);
     }
 
     return state;

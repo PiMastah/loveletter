@@ -49,4 +49,14 @@ describe("Game state", function () {
     it("knows the cards that have been removed", function () {
         assert.defined(self.state.discardedCards);
     });
+
+    it("can remove a player from the round", function () {
+        var players = ['Alice', 'Bob'];
+        self.state.players = players;
+        self.state.remainingPlayers = players;
+        var index = 1;
+
+        self.state.removePlayer(index);
+        refute.contains(self.state.remainingPlayers, self.state.players[index]);
+    });
 });

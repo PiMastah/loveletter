@@ -15,3 +15,7 @@ var Gamestate = function (deck) {
     this.currentPlayer = -1;
     return this;
 };
+
+Gamestate.prototype.removePlayer = function(index) {
+    this.remainingPlayers.splice(index, 1);
+};
