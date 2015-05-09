@@ -1,15 +1,15 @@
 module.exports = {
-    create: function () {
-        return new Gamestate();
+    create: function (deck) {
+        return new Gamestate(deck);
     }
 };
 
-var Gamestate = function () {
+var Gamestate = function (deck) {
     this.players = [];
     this.remainingPlayers = [];
     this.hands = [];
     this.scores = [];
-    this.deck = [];
+    this.deck = deck;
     this.playedCards = [];
     this.discardedCards = [];
     this.currentPlayer = 0;

@@ -2,11 +2,11 @@ var cardFactory = require('./card');
 
 module.exports = {
     create: function () {
-        return new Dealer();
+        return new Deck();
     }
 };
 
-var Dealer = function () {
+var Deck = function () {
     return this;
 };
 
@@ -14,9 +14,9 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-Dealer.prototype.shuffleDeck = function() {
-    if (this.deck && this.deck.length) {
-        this.deck.forEach(function (card, index, cards) {
+Deck.prototype.shuffleDeck = function() {
+    if (this.cards && this.cards.length) {
+        this.cards.forEach(function (card, index, cards) {
             var remaining = cards.length - index;
             var moveFromIndex = getRandomInt(index, index + remaining - 1);
             var	temp = cards[index];
@@ -27,20 +27,20 @@ Dealer.prototype.shuffleDeck = function() {
     }
 };
 
-Dealer.prototype.initDeck = function() {
-    var deck = [];
+Deck.prototype.initDeck = function() {
+    var cards = [];
     for (var rank in this.deckConfig) {
         rank = parseInt(rank);
         for (var i = 0; i < this.deckConfig[rank]; i++) {
-            deck.push(cardFactory.create(rank));
+            cards.push(cardFactory.create(rank));
         }
     }
-    this.deck = deck;
+    this.cards = cards;
 };
 
-Dealer.prototype.drawCard = function() {
-    if (this.deck.length > 0) {
-        return this.deck.shift();
+Deck.prototype.drawCard = function() {
+    if (this.cards.length > 0) {
+        return this.cards.shift();
     } else {
         return false;
     }

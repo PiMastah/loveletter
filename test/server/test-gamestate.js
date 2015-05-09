@@ -3,52 +3,54 @@ var assert = buster.assert;
 var refute = buster.refute;
 
 var stateFactory = require('../../src/server/gamestate');
+var deckFactory = require('../../src/server/deck');
 
 buster.spec.expose();
 
 describe("Game state", function () {
     var self = this;
     buster.spec.before(function () {
-        self.state = stateFactory.create();
+        self.deck = deckFactory.create();
+        self.state = stateFactory.create(self.deck);
     });
 
     it("can be created", function () {
-        assert('object' === typeof self.state);
+        assert.same(typeof self.state, 'object');
     });
 
     it("contains players", function () {
-        assert(undefined !== self.state.players);
+        assert.defined(self.state.players);
     });
 
     it("knows the remaining players", function () {
-        assert(undefined !== self.state.remainingPlayers);
+        assert.defined(self.state.remainingPlayers);
     });
 
     it("knows the starting player", function () {
-        assert(undefined !== self.state.startingPlayer);
+        assert.defined(self.state.startingPlayer);
     });
 
     it("knows the current player", function () {
-        assert(undefined !== self.state.currentPlayer);
+        assert.defined(self.state.currentPlayer);
     });
 
     it("knows the current scores", function () {
-        assert(undefined !== self.state.scores);
+        assert.defined(self.state.scores);
     });
 
     it("knows each players cards", function () {
-        assert(undefined !== self.state.hands);
+        assert.defined(self.state.hands);
     });
 
     it("knows the cards that each player has played", function () {
-        assert(undefined !== self.state.playedCards);
+        assert.defined(self.state.playedCards);
     });
 
     it("knows the state of the deck", function () {
-        assert(undefined !== self.state.deck);
+        assert.same(self.state.deck, self.deck);
     });
 
     it("knows the cards that have been removed", function () {
-        assert(undefined !== self.state.discardedCards);
+        assert.defined(self.state.discardedCards);
     });
 });
