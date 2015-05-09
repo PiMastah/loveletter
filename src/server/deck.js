@@ -27,7 +27,7 @@ Deck.prototype.shuffle = function() {
     }
 };
 
-Deck.prototype.initDeck = function() {
+Deck.prototype.init = function() {
     var cards = [];
     for (var rank in this.deckConfig) {
         rank = parseInt(rank);

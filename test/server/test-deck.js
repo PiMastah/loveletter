@@ -11,7 +11,7 @@ describe("A deck", function () {
     buster.spec.before(function () {
         self.deck = deckFactory.create();
         self.deck.deckConfig = {'1' : 1, '2' : 2, '3': 3, '4' : 4};
-        self.deck.initDeck();
+        self.deck.init();
 
     });
 
