@@ -47,7 +47,7 @@ describe("Game state", function () {
     });
 
     it("knows the state of the deck", function () {
-        assert.same(self.state.deck, self.deck);
+        assert.equals(self.state.deck, self.deck);
     });
 
     it("knows the cards that have been removed", function () {
